@@ -1,23 +1,24 @@
-import logo from './logo.svg';
+
+import { useState } from 'react';
 import './App.css';
+import Editor from './components/Editor';
 
 function App() {
+  
+
+  const [editors, setEditors] = useState([
+    <Editor/>,
+    <Editor />
+  ])
+  const createEditor = () => {
+    setEditors([...editors, <Editor/>]);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      <h5>SQL Query Editor</h5>
+      {editors.map(editor => editor)}
+      <button onClick={ createEditor }>add editor</button>
     </div>
   );
 }
