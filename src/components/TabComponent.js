@@ -1,8 +1,10 @@
 import React from 'react'
 
-const TabComponent = ({tab}) => {
+const TabComponent = ({setActiveTab, tab}) => {
+    
   return (
-    <div style={
+    <button onClick = {()=>{setActiveTab(tab);console.log("buttonClicked", tab.tabId);
+    }} style={
         {
             cursor: "pointer",
             width: "150px",
@@ -20,7 +22,7 @@ const TabComponent = ({tab}) => {
             margin: "5px",
         }
     }>del</div>
-    </div>
+    </button>
   )
 }
 

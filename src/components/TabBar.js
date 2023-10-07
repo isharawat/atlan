@@ -1,31 +1,44 @@
-import React from 'react'
-import { useState } from 'react';
-import TabComponent from './TabComponent';
-import { v4 as uuid } from 'uuid';
-import { Editor } from '@monaco-editor/react';
+import React from "react";
+import { useState } from "react";
+import TabComponent from "./TabComponent";
+import { v4 as uuid } from "uuid";
+import MainEditor from "./MainEditor";
+
 const TabBar = () => {
-    const [tabs, setTabs] = useState([{
-        name: "New Query",
-        tabId: uuid(),
-        code: "Select * from table",
-        outputDetails: {},
-    }]);
-    const [activeTab, setActiveTab] = useState(tabs[0]);
-    const handleClick = () => {
-        setTabs([...tabs, {
-            name: "New Query",
-            tabId: uuid(),
-            code: "Select * from table",
-            outputDetails: {},
-        }]);
-    }
+  const [tabs, setTabs] = useState([
+    {
+      name: "New Query",
+      tabId: uuid(),
+      code: "Select * from table",
+      outputDetails: [],
+    },
+  ]);
+  const [activeTab, setActiveTab] = useState(tabs[0]);
+  const handleClick = () => {
+    const newTab = {
+      name: "New Query",
+      tabId: uuid(),
+      code: "Select * from table",
+      outputDetails: [],
+    };
+    const alltabs = tabs;
+    alltabs.push(newTab);
+    setActiveTab(newTab);
+    setTabs(alltabs);
+  };
+  console.log("currentTab", activeTab,tabs);
   return (
     <div>
-        {tabs.length && tabs.map((tab) => <TabComponent onClick = {setActiveTab(tab)} tab = {tab}/>)}
+      
+      { tabs.map((tab) => (
+          <TabComponent key={tab.tabId} setActiveTab={setActiveTab} tab={tab} />
+        ))}
       <button onClick={handleClick}>Add new Tab</button>
-      {activeTab && <Editor activeTab = {activeTab} tabs = {tabs} setTabs = {setTabs}/>}
+      {activeTab && (
+        <MainEditor activeTab={activeTab} tabs={tabs} setTabs={setTabs} />
+      )}
     </div>
-  )
-}
+  );
+};
 
-export default TabBar
+export default TabBar;

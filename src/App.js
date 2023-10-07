@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './App.css';
-import Editor from './components/Editor';
+import Editor from './components/MainEditor';
 import TabBar from './components/TabBar';
 
 function App() {

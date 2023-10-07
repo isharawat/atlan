@@ -1,17 +1,15 @@
 import React from "react";
-import { data1 } from "../dummyData";
-const OutputDetails = ({data}) => {
-  if (!data || data.length === 0) {
-    // return <div>No data available.</div>;
+
+const OutputDetails = ({outputDetails}) => {
+
+  if (!outputDetails || outputDetails.length === 0) {
     return <></>;
   }
 
-  const columns = Object.keys(data[0]);
+  const columns = Object.keys(outputDetails[0]);
 
   const handleExport = () => {
-    // Implement data export logic here
-    // For simplicity, we'll just log the data to the console in this example
-    console.log(data);
+    console.log(outputDetails);
   };
   return (
     <div>
@@ -25,7 +23,7 @@ const OutputDetails = ({data}) => {
               </tr>
             </thead>
             <tbody>
-              {data.map((row) => (
+              {outputDetails.map((row) => (
                 <tr key={row.id}>
                   {columns.map((column) => (
                     <td key={column}>{row[column]}</td>

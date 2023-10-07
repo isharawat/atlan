@@ -1,39 +1,42 @@
 import React, { useEffect, useState } from "react";
-import Input from "./Input";
-//import { classnames } from "../utils/general";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import useKeyPress from "../hooks/useKeyPress";
-
 import OutputWindow from "./OutputWindow";
 import OutputDetails from "./OutputDetails.js";
 import { data1 } from "../dummyData";
+import { Editor } from '@monaco-editor/react';
 
 
-const Editor = ({activeTab, tabs, setTabs}) => {
-  const active = tabs.filter((c) => c.tabId == activeTab.tabId);
-  const code = active.code;
-  const outputDetails = active.outputDetails;
- // const [processing, setProcessing] = useState(null);
+const MainEditor = ({activeTab, tabs, setTabs}) => {
+  
+  const active = tabs.filter((c) => c.tabId === activeTab.tabId);
+
+  const code = active[0].code;
+  
+  const outputDetails = active[0].outputDetails;
+  const [processing, setProcessing] = useState(null);
 
   const enterPress = useKeyPress("Enter");
   const ctrlPress = useKeyPress("Control");
 
-  const codeChange = (e) => {
+  const codeChange = (value) => {
+    
     const newtab = tabs.map((c) => {
       if (c.tabId === activeTab.tabId) {
-        // Increment the clicked counter
+        console.log("inside map", c);
         const newCurrentTab = {
           name: c.name,
-          id: c.tabId,
-          code: e.target.value,
-          outputDetails: c.OutputDetails,
+          tabId: c.tabId,
+          code: value,
+          outputDetails: c.outputDetails,
         }
         return newCurrentTab;
       } else {
         return c;
       }
     })
+    console.log("final array", newtab)
     setTabs(newtab);
   };
   const outputChange = () => {
@@ -42,7 +45,7 @@ const Editor = ({activeTab, tabs, setTabs}) => {
         // Increment the clicked counter
         const newCurrentTab = {
           name: c.name,
-          id: c.tabId,
+          tabId: c.tabId,
           code: c.code,
           outputDetails: data1,
         }
@@ -80,9 +83,9 @@ const Editor = ({activeTab, tabs, setTabs}) => {
   // };
   
   const handleCompile = () => {
-    //setProcessing(true);
+    setProcessing(true);
     outputChange();
-    //setProcessing(false);
+    setProcessing(false);
     // We will come to the implementation later in the code
   };
 
@@ -150,9 +153,9 @@ const Editor = ({activeTab, tabs, setTabs}) => {
               onClick={handleCompile}
               disabled={!code}
             >
-              {/* {processing ? "Processing..." :  */}
+              {processing ? "Processing..." :
               "Compile and Execute"
-              {/* } */}
+              }
             </button>
           </div>
           {outputDetails && <OutputDetails outputDetails={outputDetails} />}
@@ -161,4 +164,4 @@ const Editor = ({activeTab, tabs, setTabs}) => {
     </>
   );
 };
-export default Editor;
+export default MainEditor;
