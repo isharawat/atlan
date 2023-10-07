@@ -26,12 +26,18 @@ const TabBar = () => {
     setActiveTab(newTab);
     setTabs(alltabs);
   };
+
+  const onTabDelete = (currTabId) => {
+    if(activeTab.tabId == currTabId) {
+        
+    }
+  }
   console.log("currentTab", activeTab,tabs);
   return (
     <div>
       
       { tabs.map((tab) => (
-          <TabComponent key={tab.tabId} setActiveTab={setActiveTab} tab={tab} />
+          <TabComponent key={tab.tabId} setActiveTab={setActiveTab} tab={tab} onTabDelete = {()=>onTabDelete(tab.tabId)} />
         ))}
       <button onClick={handleClick}>Add new Tab</button>
       {activeTab && (

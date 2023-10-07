@@ -1,7 +1,6 @@
 import React from 'react'
-
-const TabComponent = ({setActiveTab, tab}) => {
-    
+const TabComponent = ({setActiveTab, tab, onTabDelete}) => {
+   
   return (
     <button onClick = {()=>{setActiveTab(tab);console.log("buttonClicked", tab.tabId);
     }} style={
@@ -13,8 +12,9 @@ const TabComponent = ({setActiveTab, tab}) => {
         }
     }>
       <span>{tab.name}</span>
-      <div style={
+      <div onClick={() => {onTabDelete()}}  style={
         {
+            cursor: "default",
             display: "inline-block",
             width: "30px",
             backgroundColor: "green",

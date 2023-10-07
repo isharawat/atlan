@@ -56,6 +56,7 @@ const MainEditor = ({activeTab, tabs, setTabs}) => {
     })
     setTabs(newtab);
   };
+
   // useEffect(() => {
   //   if (enterPress && ctrlPress) {
   //     console.log("enterPress", enterPress);
