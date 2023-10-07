@@ -1,7 +1,6 @@
-// src/QueryResult.js
-import React, { useState } from "react";
-
-const QueryResult = ({ data, toggle, setToggle}) => {
+import React from "react";
+import { data1 } from "../dummyData";
+const OutputDetails = ({data}) => {
   if (!data || data.length === 0) {
     // return <div>No data available.</div>;
     return <></>;
@@ -14,21 +13,9 @@ const QueryResult = ({ data, toggle, setToggle}) => {
     // For simplicity, we'll just log the data to the console in this example
     console.log(data);
   };
-
-  const handleToggle = () => {
-    if (toggle) {
-      setToggle(false);
-    } else {
-      setToggle(true);
-    }
-  };
-
   return (
     <div>
-      <button onClick={handleToggle}>Toggle</button>
-      {toggle ? (
-        <>
-          
+        
           <table>
             <thead>
               <tr>
@@ -48,12 +35,7 @@ const QueryResult = ({ data, toggle, setToggle}) => {
             </tbody>
           </table>
           <button onClick={handleExport}>Export Data</button>
-        </>
-      ) : (
-        <></>
-      )}
     </div>
   );
 };
-
-export default QueryResult;
+export default OutputDetails;

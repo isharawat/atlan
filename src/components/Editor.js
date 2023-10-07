@@ -1,63 +1,164 @@
-// src/Editor.js
-import React, { useState, useEffect } from 'react';
-import QueryResult from './QueryResult';
-import { data1, data2 } from '../dummyData';
+import React, { useEffect, useState } from "react";
+import Input from "./Input";
+//import { classnames } from "../utils/general";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import useKeyPress from "../hooks/useKeyPress";
 
-const Editor = () => {
-    const [toggle, setToggle] = useState(true);
-  const [query, setQuery] = useState('');
-  const [queryHistory, setQueryHistory] = useState([]);
+import OutputWindow from "./OutputWindow";
+import OutputDetails from "./OutputDetails.js";
+import { data1 } from "../dummyData";
 
-  const [queryResult, setQueryResult] = useState([]);
+
+const Editor = ({activeTab, tabs, setTabs}) => {
+  const active = tabs.filter((c) => c.tabId == activeTab.tabId);
+  const code = active.code;
+  const outputDetails = active.outputDetails;
+ // const [processing, setProcessing] = useState(null);
+
+  const enterPress = useKeyPress("Enter");
+  const ctrlPress = useKeyPress("Control");
+
+  const codeChange = (e) => {
+    const newtab = tabs.map((c) => {
+      if (c.tabId === activeTab.tabId) {
+        // Increment the clicked counter
+        const newCurrentTab = {
+          name: c.name,
+          id: c.tabId,
+          code: e.target.value,
+          outputDetails: c.OutputDetails,
+        }
+        return newCurrentTab;
+      } else {
+        return c;
+      }
+    })
+    setTabs(newtab);
+  };
+  const outputChange = () => {
+    const newtab = tabs.map((c) => {
+      if (c.tabId === activeTab.tabId) {
+        // Increment the clicked counter
+        const newCurrentTab = {
+          name: c.name,
+          id: c.tabId,
+          code: c.code,
+          outputDetails: data1,
+        }
+        return newCurrentTab;
+      } else {
+        return c;
+      }
+    })
+    setTabs(newtab);
+  };
+  // useEffect(() => {
+  //   if (enterPress && ctrlPress) {
+  //     console.log("enterPress", enterPress);
+  //     console.log("ctrlPress", ctrlPress);
+  //     handleCompile();
+  //   }
+  // }, [ctrlPress, enterPress]);
+
+  // const onChange = (action, data) => {
+  //   switch (action) {
+  //     case "code": {
+  //       setCode(data);
+  //       break;
+  //     }
+  //     default: {
+  //       console.warn("case not handled!", action, data);
+  //     }
+  //   }
+  // };
+
+
+  // const handleEditorChange = (value) => {
+  //   setValue(value);
+  //   onChange("code", value);
+  // };
   
-  const handleQuerySubmit = (query) => {
-    // You can implement query handling logic here.
-    // For this example, we'll switch between two predefined queries.
-    setToggle(false);
-    setQueryResult(data1);
-    setToggle(true);
-  };
-  const handleQueryChange = (e) => {
-    setQuery(e.target.value);
+  const handleCompile = () => {
+    //setProcessing(true);
+    outputChange();
+    //setProcessing(false);
+    // We will come to the implementation later in the code
   };
 
-  const handleSubmit = () => {
-    handleQuerySubmit(query);
 
-    // // Update query history
-    // setQueryHistory([...queryHistory, query]);
 
-    // // Save query history to localStorage
-    // localStorage.setItem('queryHistory', JSON.stringify(queryHistory));
-  };
+  // const checkStatus = async (token) => {
+  //   // We will come to the implementation later in the code
+  // };
 
+  // const showSuccessToast = (msg) => {
+  //   toast.success(msg || `Compiled Successfully!`, {
+  //     position: "top-right",
+  //     autoClose: 1000,
+  //     hideProgressBar: false,
+  //     closeOnClick: true,
+  //     pauseOnHover: true,
+  //     draggable: true,
+  //     progress: undefined,
+  //   });
+  // };
+  // const showErrorToast = (msg) => {
+  //   toast.error(msg || `Something went wrong! Please try again.`, {
+  //     position: "top-right",
+  //     autoClose: 1000,
+  //     hideProgressBar: false,
+  //     closeOnClick: true,
+  //     pauseOnHover: true,
+  //     draggable: true,
+  //     progress: undefined,
+  //   });
+  // };
 
   return (
-    <div>
-      <textarea
-        placeholder="Enter SQL Query"
-        value={query}
-        onChange={handleQueryChange}
+    <>
+      <ToastContainer
+        position="top-right"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
       />
-      <button onClick={handleSubmit}>Run Query</button>
-      {queryResult && (
-        <div>
-          {/* <h2>Query Results</h2> */}
-          <QueryResult data={queryResult} toggle = {toggle} setToggle = {setToggle}/>
+      <div className="h-4 w-full bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500"></div>
+
+      <div className="flex flex-row space-x-4 items-start px-4 py-4">
+        <div className="flex flex-col w-full h-full justify-start items-end">
+          <div className="overlay rounded-md overflow-hidden w-full h-full shadow-4xl">
+            <Editor
+              height="20vh"
+              width={`100%`}
+              value={code}
+              defaultValue="// some comment"
+              onChange={codeChange}
+            />
+            </div>
+      </div>
+
+        <div className="right-container flex flex-shrink-0 w-[30%] flex-col">
+          <OutputWindow outputDetails={outputDetails} />
+          <div className="flex flex-col items-end">
+            <button
+              onClick={handleCompile}
+              disabled={!code}
+            >
+              {/* {processing ? "Processing..." :  */}
+              "Compile and Execute"
+              {/* } */}
+            </button>
+          </div>
+          {outputDetails && <OutputDetails outputDetails={outputDetails} />}
         </div>
-      )}
-      {/* {queryHistory.length > 0 && (
-        <div>
-          <h6>Query History</h6>
-          <ul>
-            {queryHistory.map((q, index) => (
-              <li key={index}>{q}</li>
-            ))}
-          </ul>
-        </div>
-      )} */}
-    </div>
+      </div>
+    </>
   );
 };
-
 export default Editor;
