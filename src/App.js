@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import './App.css';
 import Editor from './components/Editor';
+import Input from './components/Input';
 
 function App() {
   
@@ -16,6 +17,7 @@ function App() {
 
   return (
     <div className='App'>
+      <Input/>
       <h5>SQL Query Editor</h5>
       {editors.map(editor => editor)}
       <button onClick={ createEditor }>add editor</button>
