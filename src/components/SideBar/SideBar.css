@@ -5,6 +5,7 @@
     background-color: #f0f0f0;
     height: 100vh;
     padding: 20px;
+    border: 1px solid #ccc;
   }
   
   /* Style for the section headers (e.g., "Models" and "Saved Queries") */

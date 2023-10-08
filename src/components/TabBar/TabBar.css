@@ -1,0 +1,51 @@
+/* TabBar.css */
+.MainOuter {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+
+  }
+/* Style for the container of the tab bar */
+.TabBarContainer {
+    width: 140vh;
+    margin: 0px 5px;
+    border: 1px solid #ccc;
+  }
+
+  /* Style for the tabs container */
+  .TabsContainer {
+    background-color: #f3f3f3;
+    overflow: auto;
+    white-space: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden; 
+  }
+  
+  /* Style for each individual tab */
+  .TabComponent {
+    cursor: pointer;
+    font-size: 15px;
+  }
+  .TabComponentName{
+    display: inline-block;
+    width: 90px;
+    white-space : nowrap; 
+    overflow: hidden;
+    text-overflow:ellipsis;
+  }
+  .addIconBox{
+    background-color: #f3f3f3;
+    border: 1px solid #ccc;
+    display: inline-flex; 
+    padding: 4px;
+    cursor: pointer;
+  }
+
+  .TabCrossIcon {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2px;
+  }
+  .TabCrossIcon:hover {
+    background-color: white;
+  }
