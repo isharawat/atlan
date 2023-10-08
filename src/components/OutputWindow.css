@@ -1,0 +1,30 @@
+/* OutputWindow.css */
+
+/* Container styling */
+.output-window {
+    text-align: center;
+    margin: 20px;
+  }
+  
+  /* Input field styling */
+  .input-field {
+    width: 50vh;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-right: 10px;
+  }
+  
+  /* Save button styling */
+  .save-button {
+    cursor: pointer;
+    display: inline-block;
+    padding: 10px;
+  }
+ 
+  /* Style for the button when hovered */
+  .save-button:hover {
+    background-color: #ccc; /* Darker blue color on hover */
+  }
+  

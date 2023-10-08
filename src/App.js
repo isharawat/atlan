@@ -2,21 +2,16 @@ import { useState } from 'react';
 import './App.css';
 import Editor from './components/MainEditor';
 import TabBar from './components/TabBar';
+import { SideBar } from './components/SideBar';
 
 function App() {
-  
-
-  // const [editors, setEditors] = useState([
-  //   <Editor/>,
-  //   <Editor />
-  // ])
-  // const createEditor = () => {
-  //   setEditors([...editors, <Editor/>]);
-  // };
-
+  const [savedQuery, setSavedQuery] = useState([]);
   return (
     <div className='App'>
-      <TabBar/>
+      <div className='MainOuter'>
+        <SideBar savedQuery = {savedQuery} setSavedQuery = {setSavedQuery}/> 
+        <TabBar savedQuery = {savedQuery} setSavedQuery = {setSavedQuery}/>
+      </div>
       {/* <Editor/>
       <h5>SQL Query Editor</h5>
       {editors.map(editor => editor)}

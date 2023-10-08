@@ -8,7 +8,7 @@ import { data1 } from "../dummyData";
 import { Editor } from '@monaco-editor/react';
 
 
-const MainEditor = ({activeTab, tabs, setTabs}) => {
+const MainEditor = ({activeTab, tabs, setTabs, setSavedQuery, savedQuery}) => {
   
   const active = tabs.filter((c) => c.tabId === activeTab.tabId);
 
@@ -139,25 +139,26 @@ const MainEditor = ({activeTab, tabs, setTabs}) => {
           <div className="overlay rounded-md overflow-hidden w-full h-full shadow-4xl">
             <Editor
               height="20vh"
-              width={`100%`}
+              width='100%'
               value={code}
-              defaultValue="// some comment"
               onChange={codeChange}
             />
             </div>
       </div>
 
         <div className="right-container flex flex-shrink-0 w-[30%] flex-col">
-          <OutputWindow outputDetails={outputDetails} />
+          <div style={{display: "grid", gridTemplateColumns: "4fr 1fr 2fr"}}>
+          <OutputWindow setSavedQuery = {setSavedQuery} savedQuery={savedQuery} activeTab = {activeTab} tabs = {tabs} setTabs = {setTabs} />
           <div className="flex flex-col items-end">
             <button
               onClick={handleCompile}
               disabled={!code}
             >
               {processing ? "Processing..." :
-              "Compile and Execute"
+              "Run Query"
               }
             </button>
+          </div>
           </div>
           {outputDetails && <OutputDetails outputDetails={outputDetails} />}
         </div>

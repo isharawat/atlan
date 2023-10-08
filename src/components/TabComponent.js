@@ -1,27 +1,15 @@
 import React from 'react'
-const TabComponent = ({setActiveTab, tab, onTabDelete}) => {
-   
+import { crossIcon } from '../assets/images';
+import './TabBar.css';
+const TabComponent = ({BGcolor, setActiveTab, tab, onTabDelete}) => {
+   console.log(BGcolor);
   return (
-    <button onClick = {()=>{setActiveTab(tab);console.log("buttonClicked", tab.tabId);
-    }} style={
-        {
-            cursor: "pointer",
-            width: "150px",
-            fontSize: "15px",
-            display: "inline-block",
-        }
-    }>
-      <span>{tab.name}</span>
-      <div onClick={() => {onTabDelete()}}  style={
-        {
-            cursor: "default",
-            display: "inline-block",
-            width: "30px",
-            backgroundColor: "green",
-            color: "white",
-            margin: "5px",
-        }
-    }>del</div>
+    <button className ="TabComponent" onClick = {()=>{setActiveTab(tab)}} style={{backgroundColor: `${BGcolor}`}}>
+      <div className =  "TabComponentName">{tab.name}</div>
+      <div className = "TabCrossIcon" onClick={(e) => { e.stopPropagation();
+        onTabDelete();}}>
+        <img src = {crossIcon} style = {{width: "13px"}}/>
+      </div>
     </button>
   )
 }

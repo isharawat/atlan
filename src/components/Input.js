@@ -14,7 +14,7 @@ const Input = ({ onChange, language, code, theme }) => {
     <div className="overlay rounded-md overflow-hidden w-full h-full shadow-4xl">
       <Editor
         height="20vh"
-        width={`100%`}
+        width='100%'
         value={value}
         defaultValue="// some comment"
         onChange={handleEditorChange}
