@@ -6,7 +6,6 @@ import OutputDetails from "./Output/OutputDetails.js";
 import { data1 } from "../dummyData";
 import { Editor } from "@monaco-editor/react";
 import { AppContext } from "../context/AppContext";
-
 const MainEditor = () => {
   const { tabs, activeTab, updateTab } = useContext(AppContext);
   const active = tabs.filter((c) => c.queryId === activeTab.queryId);
@@ -67,13 +66,12 @@ const MainEditor = () => {
           </div>
         </div>
 
-        <div className="right-container flex flex-shrink-0 w-[30%] flex-col">
-          <div style={{ display: "grid", gridTemplateColumns: "4fr 1fr 2fr" }}>
+        <div className="right-container">
+          <div style={{ display: "grid", gridTemplateColumns: "4fr 2fr" }}>
             <OutputWindow />
-            <div className="flex flex-col items-end">
-              <button onClick={handleCompile} disabled={!code}>
-                {processing ? "Processing..." : "Run Query"}
-              </button>
+            
+            <div className="RunQueryBox" onClick={handleCompile} disabled={!code}>
+               <button>{processing ? "Processing..." : "Run Query"}</button> 
             </div>
           </div>
           {outputDetails && <OutputDetails outputDetails={outputDetails} />}

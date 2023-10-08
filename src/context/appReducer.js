@@ -1,11 +1,6 @@
 const appReducer = (state, action) => {
   const { type, payload } = action;
   switch (type) {
-    case "toggleModal":
-      return{
-        ...state,
-        modal: payload,
-      }
     case "AddingNewTab":
       return {
         ...state,
@@ -26,7 +21,11 @@ const appReducer = (state, action) => {
         ...state,
         savedQueries: payload,
       }
-
+    case "toggleModal":
+      return{
+        ...state,
+        modal: payload,
+    }
     default:
       return state;
   }

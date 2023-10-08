@@ -110,11 +110,11 @@ export const AppProvider = ({ children }) => {
     tabs: state.tabs,
     activeTab: state.activeTab,
     savedQueries: state.savedQueries,
+    modal: state.modal,
     addTab,
     updateActiveTab,
     updateTab,
     deleteTab,
-    modal: state.modal,
     saveQuery,
     toggleModalVal,
   };
