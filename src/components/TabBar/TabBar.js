@@ -32,7 +32,7 @@ const TabBar = () => {
         <TabComponent key={tab.queryId} BGcolor = {activeTab.queryId === tab.queryId? "#f0f0f0" : "#ccc"} tab={tab} />
       ))}
         
-      <button className="addIconBox" onClick={handleClick}><img src = {addIcon} style={{width:"17px", backgroundColor: "#f3f3f3", alignItems: "center"}}/>
+      <button className="addIconBox" onClick={handleClick}><img src = {addIcon} alt ="img" style={{width:"17px", backgroundColor: "#f3f3f3", alignItems: "center"}}/>
       </button>
       </div>
       {activeTab && tabs.length && (<MainEditor/>)}

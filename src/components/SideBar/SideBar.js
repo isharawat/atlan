@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import "./SideBar.css";
 import { AppContext } from "../../context/AppContext";
 import { deleteIcon } from "../../assets/images";
@@ -9,7 +9,7 @@ export const SideBar = () => {
   const {tabs, addTab, savedQueries, updateActiveTab, saveQuery,} = useContext(AppContext);
 
   console.log(savedQueries);
-  const [allTable, setAllTable] = useState([
+  const allTable = [
     {
       name: "public.name",
       data: data1,
@@ -22,12 +22,12 @@ export const SideBar = () => {
       name: "public.user",
       data: data1,
     },
-  ]);
+  ];
   const onSavedQueryClick = (query) => {
     let found = 0;
     let currTab = {};
     for(let tab in tabs) {
-        if(tabs[tab].queryId == query.queryId) {
+        if(tabs[tab].queryId === query.queryId) {
             found = 1;
             currTab = tabs[tab];
             break;
@@ -75,7 +75,7 @@ export const SideBar = () => {
                 {query.name}
               </div>
               <button className="image-button" onClick={() => handleDelete(query)}>
-                <img src={deleteIcon} style={{ width: "15px" }} />
+                <img src={deleteIcon} alt = "img" style={{ width: "15px" }} />
               </button>
             </div>
             )

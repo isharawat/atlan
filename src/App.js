@@ -1,6 +1,6 @@
 import "./App.css";
 import TabBar from "./components/TabBar/TabBar";
-import { AppContext, AppProvider } from "./context/AppContext";
+import {  AppProvider } from "./context/AppContext";
 import { SideBar } from "./components/SideBar/SideBar";
 
 function App() {

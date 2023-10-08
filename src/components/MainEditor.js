@@ -41,7 +41,7 @@ const MainEditor = () => {
     if (enterPress && ctrlPress) {
       console.log("enterPress", enterPress);
       console.log("ctrlPress", ctrlPress);
-      handleCompile();
+      // handleCompile();
     }
   }, [ctrlPress, enterPress]);
 

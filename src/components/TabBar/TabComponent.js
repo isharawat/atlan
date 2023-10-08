@@ -12,7 +12,7 @@ const TabComponent = ({BGcolor, tab}) => {
         e.stopPropagation();
         deleteTab(tab.queryId);
         }}>
-        <img src = {crossIcon} style = {{width: "13px"}}/>
+        <img src = {crossIcon} alt = "img" style = {{width: "13px"}}/>
       </div>
     </button>
   )
