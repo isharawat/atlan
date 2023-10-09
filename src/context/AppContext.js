@@ -3,27 +3,42 @@ import appReducer from "./appReducer";
 import { v4 as uuid } from "uuid";
 
 const initialState = {
-  savedQueries: [],
+  savedQueries: [
+    {
+      name: "Saved Query 1",
+      queryId: uuid(),
+      code: "Select * from name where age > 20",
+    },
+    {
+      name: "Saved Query 2",
+      queryId: uuid(),
+      code: "Select * from city",
+    },
+    {
+      name: "Saved Query 3",
+      queryId: uuid(),
+      code: "Select * from country",
+    },
+  ],
   tabs: [
     {
       name: "New Query",
       queryId: uuid(),
       code: "Select * from table",
       outputDetails: [],
-      modal: false,
     },
   ],
   activeTab: null,
+  modal: false,
 };
 
 export const AppContext = createContext(initialState);
 export const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(appReducer, initialState);
-  const toggleModalVal = () => {
-    const type = state.modal;
+  const toggleModalVal = (type) => {
     dispatch({
       type: "toggleModal",
-      payload: !type,
+      payload: type,
     })
   }
   const saveQuery = (query) => {

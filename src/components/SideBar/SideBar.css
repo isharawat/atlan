@@ -23,14 +23,22 @@
 
   /* Style for the list items when hovered */
   .saved-outer-name {
-    width: 150px;
+    width: 80%;
     font-size: 17px;
     cursor: pointer;
-    display: inline-block;
+    display: inline-flex;
+    justify-content: space-between;
     border-radius: 5px;
     white-space : nowrap; 
     overflow: hidden;
     text-overflow:ellipsis;
+  }
+  .add-new-button {
+    width: 100px;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    justify-content: space-between;
   }
   .saved-outer-name:hover {
     background-color: white;

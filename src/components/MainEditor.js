@@ -1,18 +1,19 @@
 import React, { useEffect, useState, useContext } from "react";
-import "react-toastify/dist/ReactToastify.css";
+// import "react-toastify/dist/ReactToastify.css";
 import useKeyPress from "../hooks/useKeyPress";
 import OutputWindow from "./Output/OutputWindow";
 import OutputDetails from "./Output/OutputDetails.js";
-import { data1 } from "../dummyData";
 import { Editor } from "@monaco-editor/react";
 import { AppContext } from "../context/AppContext";
+import { allTable } from "../dummyTable";
 const MainEditor = () => {
   const { tabs, activeTab, updateTab } = useContext(AppContext);
   const active = tabs.filter((c) => c.queryId === activeTab.queryId);
+  
   const code = active[0].code;
 
   const outputDetails = active[0].outputDetails;
-  const [processing, setProcessing] = useState(null);
+  const [processing, setProcessing] = useState(false);
 
   const enterPress = useKeyPress("Enter");
   const ctrlPress = useKeyPress("Control");
@@ -27,12 +28,15 @@ const MainEditor = () => {
     updateTab(newCurrentTab);
   };
 
+  let tablesLength = allTable.length;
+  let p = Math.floor(Math.random()*tablesLength);
+
   const outputChange = () => {
     const newCurrentTab = {
       name: activeTab.name,
       queryId: activeTab.queryId,
       code: activeTab.code,
-      outputDetails: data1,
+      outputDetails: allTable[p].data,
     };
     updateTab(newCurrentTab);
   };
@@ -41,14 +45,18 @@ const MainEditor = () => {
     if (enterPress && ctrlPress) {
       console.log("enterPress", enterPress);
       console.log("ctrlPress", ctrlPress);
-      // handleCompile();
     }
   }, [ctrlPress, enterPress]);
+
+
+  const handleExport = () => {
+    console.log(outputDetails);
+  };
 
   const handleCompile = () => {
     setProcessing(true);
     outputChange();
-    setProcessing(false);
+    setTimeout(()=>setProcessing(false), 1000);
   };
 
   return (
@@ -65,18 +73,18 @@ const MainEditor = () => {
             />
           </div>
         </div>
-
+        </div>
         <div className="right-container">
-          <div style={{ display: "grid", gridTemplateColumns: "4fr 2fr" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "4fr 2fr 2fr" }}>
             <OutputWindow />
-            
-            <div className="RunQueryBox" onClick={handleCompile} disabled={!code}>
-               <button>{processing ? "Processing..." : "Run Query"}</button> 
+            <div className="run-query-box" onClick={handleCompile} disabled={!code}>
+               <button className="color-green">{processing ? "Processing..." : "Run Query"}</button> 
             </div>
+            { <div className="run-query-box "><button onClick={handleExport}>Export Data</button></div>}
           </div>
           {outputDetails && <OutputDetails outputDetails={outputDetails} />}
         </div>
-      </div>
+      
     </div>
   );
 };

@@ -1,7 +1,9 @@
 /* src/App.css */
+body {
+  background-color: #f0f0f0;
+}
 body.active-modal {
     overflow-y: hidden;
-    background-color: #ccc;
 }
   
 .App {
@@ -10,17 +12,30 @@ body.active-modal {
   background-color: #f0f0f0;
 }
 
-.MainOuter {
+.color-green {
+  background-color: #05aa6d;
+  color: #f3f3f3;
+  font-size: 20px;
+}
+.color-green:hover{
+  color: black;
+}
+.main-outer {
   display: grid;
   grid-template-columns: 1fr 5fr;
+
 }
 
-.RunQueryBox {
+.run-query-box {
   display: flex;
   justify-items: center;
   align-items: center;
 }
-
+.right-side {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
 h1 {
   color: #333;
 }
@@ -37,22 +52,37 @@ textarea {
 
 button {
   padding: 4px;
-  border: 1px solid white;
   font-size: 15px;
   background-color: white; 
-  border: none;
   cursor: pointer;
+  border: none;
+  border-radius: 5px;
 }
-.RunQueryBox button {
+button:hover {
+  background-color: #ccc;
+}
+.button {
+  padding: 4px;
+  font-size: 15px;
+  background-color: #05aa6d; 
+  cursor: pointer;
+  border: none;
+  color: white;
+  margin-top: 20px;
+  border-radius: 5px;
+}
+.button:hover {
+  background-color: #ccc;
+  color: black;
+}
+.run-query-box button {
   padding: 10px;
   border: 1px solid white;
   font-size: 15px;
   border: none;
   cursor: pointer;
 }
-.RunQueryBox button:hover {
-  background-color: #ccc;
-}
+
 
 table {
   width: 100%;

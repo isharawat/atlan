@@ -1,18 +1,18 @@
 /* TabBar.css */
-.MainOuter {
+/* .main-outer {
     display: grid;
     grid-template-columns: 1fr 4fr;
 
-  }
+  } */
 /* Style for the container of the tab bar */
-.TabBarContainer {
-    width: 140vh;
+.tab-bar-container {
+    width: 130vh;
     margin: 0px 5px;
     border: 1px solid #ccc;
   }
 
   /* Style for the tabs container */
-  .TabsContainer {
+  .tabs-container {
     background-color: #f3f3f3;
     overflow: auto;
     white-space: nowrap;
@@ -21,18 +21,20 @@
   }
   
   /* Style for each individual tab */
-  .TabComponent {
+  .tab-component {
     cursor: pointer;
     font-size: 15px;
+    display: inline-block;
+    padding: 2px;
   }
-  .TabComponentName{
+  .tab-componentName{
     display: inline-block;
     width: 90px;
     white-space : nowrap; 
     overflow: hidden;
     text-overflow:ellipsis;
   }
-  .addIconBox{
+  .add-icon-box{
     background-color: #f3f3f3;
     border: 1px solid #ccc;
     display: inline-flex; 
@@ -40,12 +42,12 @@
     cursor: pointer;
   }
 
-  .TabCrossIcon {
+  .tab-cross-icon {
     display: inline-flex;
     justify-content: center;
     align-items: center;
     padding: 2px;
   }
-  .TabCrossIcon:hover {
+  .tab-cross-icon:hover {
     background-color: white;
   }

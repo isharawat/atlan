@@ -1,28 +1,13 @@
-import React, { useContext } from "react";
+import React, {useContext, useState } from "react";
 import "./SideBar.css";
 import { AppContext } from "../../context/AppContext";
-import { deleteIcon } from "../../assets/images";
-import { data1, data2 } from "../../dummyData";
+import { addIcon, deleteIcon } from "../../assets/images";
 import { SavedTable } from "./SavedTable";
-
+import { data1 } from "../../dummyData";
+import {allTable}  from "../../dummyTable";
 export const SideBar = () => {
-  const {tabs, addTab, savedQueries, updateActiveTab, saveQuery,} = useContext(AppContext);
-
-  console.log(savedQueries);
-  const allTable = [
-    {
-      name: "public.name",
-      data: data1,
-    },
-    {
-      name: "public.country",
-      data: data2,
-    },
-    {
-      name: "public.user",
-      data: data1,
-    },
-  ];
+  const {tabs, addTab, savedQueries, updateActiveTab, saveQuery} = useContext(AppContext);
+  const [tableData, setTableData] = useState(allTable);
   const onSavedQueryClick = (query) => {
     let found = 0;
     let currTab = {};
@@ -47,6 +32,12 @@ export const SideBar = () => {
         updateActiveTab(currTab);
     }
   };
+  const addTableClick = () => {
+    setTableData([...tableData, {
+      name: "public.user",
+      data: data1,
+    }])
+  }
   const handleDelete = (query) => {
     const newSavedQuery = savedQueries.filter(
       (c) => c.queryId !== query.queryId
@@ -56,9 +47,14 @@ export const SideBar = () => {
 
   return (
     <div className="side-bar-outer-box">
+      <div>
+        <button className="add-new-button" onClick={()=>addTableClick()}>
+          <img src = {addIcon} alt = "img" style={{width: "12px"}}></img>New Table</button>
+        </div>
+
       <div className="heading">
         <h2>All Tables</h2>
-        {allTable.map((table) => (
+        {tableData.map((table) => (
           <SavedTable table={table} />
         ))}
       </div>
