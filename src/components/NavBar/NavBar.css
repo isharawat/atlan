@@ -1,5 +1,5 @@
 .database-dropdown {
-    margin: 10px;
+    margin: 10px 0px;
     border-radius: 4px;
     width: 170px;
     padding: 2px;
@@ -20,7 +20,6 @@
     color: rgb(58, 57, 57);
     font-weight: bold;
     font-size: 12px;
-    margin-left: 10px;
     box-shadow: 0 0 5px rgba(104, 102, 102, 0.3);
   }
   .database-dropdown-div {

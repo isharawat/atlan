@@ -10,6 +10,10 @@
     margin: 0px 5px;
     border: 1px solid #ccc;
   }
+  .tab-bar-container-inner {
+    display: flex;
+    justify-content: space-between;
+  }
 
   /* Style for the tabs container */
   .tabs-container {
@@ -23,13 +27,13 @@
   /* Style for each individual tab */
   .tab-component {
     cursor: pointer;
-    font-size: 15px;
+    font-size: 13px;
     display: inline-block;
     padding: 2px;
   }
   .tab-componentName{
     display: inline-block;
-    width: 90px;
+    width: 80px;
     white-space : nowrap; 
     overflow: hidden;
     text-overflow:ellipsis;

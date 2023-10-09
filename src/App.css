@@ -1,7 +1,6 @@
 /* src/App.css */
 body {
-  background-color: #f0f0f0;
-  overflow: hidden;
+  background-color: #e6e6e6;
 }
 ::-webkit-scrollbar {
   width: 10px;
@@ -25,7 +24,7 @@ body {
 .App {
   font-family: Arial, sans-serif;
   height: 100vh;
-  background-color: #f0f0f0;
+  background-color: #e6e6e6;
 }
 
 .color-green {
@@ -55,19 +54,7 @@ h1 {
   color: #333;
 }
 
-textarea {
-  width: 100%;
-  padding: 10px;
-  margin: 10px 0;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  resize: vertical;
-  min-height: 30px;
-}
-
 button {
-  padding: 4px;
-  font-size: 15px;
   background-color: white; 
   cursor: pointer;
   border: none;
@@ -77,7 +64,6 @@ button:hover {
   background-color: #ccc;
 }
 .button {
-  padding: 4px;
   font-size: 15px;
   background-color: #05aa6d; 
   cursor: pointer;
@@ -91,9 +77,9 @@ button:hover {
   color: black;
 }
 .run-query-box button {
-  padding: 10px;
+  padding: 6px;
   border: 1px solid white;
-  font-size: 15px;
+  font-size: 13px;
   border: none;
   cursor: pointer;
 }

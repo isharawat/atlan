@@ -35,11 +35,27 @@ This project is a versatile SQL query editor designed to help users work on mult
 
 - The application allows users to visualize the tables. Dummy Tables are provided in the left panel under the heading "All Tables".
 
+- The application provides table pagination to efficiently manage and navigate large datasets.
+
 ## Technology Stack
 
-- **Frontend:** Developed using React.js and the Monaco React Editor library for the code editor component.
+- **Frontend:** Developed using `React.js` and `Monaco React Editor` library for the code editor component.
 - State management: Utilizes `useContext` and `useReducer` for centralized state management, avoiding prop drilling.
-- Other libraries and tools as needed.
+
+
+## Optimization Performed
+
+### Pagination for Efficient Rendering of Large Row Datasets
+
+To enhance the performance and user experience of our application, we've implemented a robust pagination system. This feature is designed to handle and display large datasets without overloading the browser or causing performance issues.
+
+### Further enhancements
+
+Initially, each tab had its own SQL query editor component, which tightly coupled the code and result states, making it challenging to manage and store each editor component separately. To enhance code organization and maintainability, the following optimizations were implemented:
+
+- **State Centralization:** The states for code and result were removed from individual editor components and centralized at the parent component level i.e., tab component.
+- **Reusability:** This change allowed us to reuse a single editor component across multiple tabs, reducing complexity and improving efficiency.
+
 
 ## Getting Started
 

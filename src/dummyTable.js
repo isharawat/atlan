@@ -13,4 +13,4 @@ export const allTable = [
       name: "public.user",
       data: data1,
     },
-  ];
+];

@@ -4,10 +4,11 @@ import OutputDetails from "./Output/OutputDetails.js";
 import { Editor } from "@monaco-editor/react";
 import { AppContext } from "../context/AppContext";
 import { allTable } from "../dummyTable";
+import { resetIcon } from "../assets/images";
 const MainEditor = () => {
-  const { tabs, activeTab, updateTab } = useContext(AppContext);
+  const { tabs, activeTab, updateTab, resetClick } = useContext(AppContext);
   const active = tabs.filter((c) => c.queryId === activeTab.queryId);
-  
+
   const code = active[0].code;
 
   const outputDetails = active[0].outputDetails;
@@ -23,7 +24,7 @@ const MainEditor = () => {
   };
 
   let tablesLength = allTable.length;
-  let p = Math.floor(Math.random()*tablesLength);
+  let p = Math.floor(Math.random() * tablesLength);
 
   const outputChange = () => {
     const newCurrentTab = {
@@ -35,7 +36,6 @@ const MainEditor = () => {
     updateTab(newCurrentTab);
   };
 
-
   const handleExport = () => {
     console.log(outputDetails);
   };
@@ -43,7 +43,7 @@ const MainEditor = () => {
   const handleCompile = () => {
     setProcessing(true);
     outputChange();
-    setTimeout(()=>setProcessing(false), 1000);
+    setTimeout(() => setProcessing(false), 1000);
   };
 
   return (
@@ -60,18 +60,39 @@ const MainEditor = () => {
             />
           </div>
         </div>
-        </div>
-        <div className="right-container">
-          <div style={{ display: "grid", gridTemplateColumns: "4fr 2fr 2fr" }}>
-            <OutputWindow />
-            <div className="run-query-box" onClick={handleCompile} disabled={!code}>
-               <button className="color-green">{processing ? "Processing..." : "Run Query"}</button> 
+      </div>
+      <div className="right-container">
+        <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr" }}>
+          <OutputWindow />
+          <div style={{ display: "grid", gridTemplateColumns: "2fr 2fr 1fr"}}>
+            <div
+              className="run-query-box"
+              onClick={handleCompile}
+              disabled={!code}
+            >
+              <button className="color-green">
+                {processing ? "Processing..." : "Run Query"}
+              </button>
             </div>
-            { <div className="run-query-box "><button onClick={handleExport}>Export Data</button></div>}
+            <div className="run-query-box ">
+              <button onClick={handleExport}>Export Data</button>
+            </div>
+            <div className="run-query-box" onClick={resetClick}>
+              <img
+                src={resetIcon}
+                alt="img"
+                style={{
+                  width: "20px",
+                  backgroundColor: "#f3f3f3",
+                  alignItems: "center",
+                  cursor: "pointer",
+                }}
+              />
+            </div>
           </div>
-          {outputDetails && <OutputDetails outputDetails={outputDetails} />}
         </div>
-      
+        {outputDetails && <OutputDetails outputDetails={outputDetails} />}
+      </div>
     </div>
   );
 };

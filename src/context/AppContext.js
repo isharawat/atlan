@@ -47,6 +47,19 @@ export const AppProvider = ({ children }) => {
       payload: query,
     });
   };
+  
+  const resetClick = () => {
+    const newtab = state.tabs.map((c) => {
+      if (c.queryId === state.activeTab.queryId) {
+        console.log("inside map", c);
+        const currtab = {...c, code: "Select * from table"};
+        return currtab;
+      } else {
+        return c;
+      }
+    });
+    dispatch({ type: "ChangingCodeValue", payload: newtab });
+  }
 
   const updateActiveTab = (updateTab) => {
     dispatch({
@@ -132,6 +145,7 @@ export const AppProvider = ({ children }) => {
     deleteTab,
     saveQuery,
     toggleModalVal,
+    resetClick,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
