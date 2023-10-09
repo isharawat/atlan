@@ -1,6 +1,4 @@
 import React, { useEffect, useState, useContext } from "react";
-// import "react-toastify/dist/ReactToastify.css";
-import useKeyPress from "../hooks/useKeyPress";
 import OutputWindow from "./Output/OutputWindow";
 import OutputDetails from "./Output/OutputDetails.js";
 import { Editor } from "@monaco-editor/react";
@@ -14,10 +12,6 @@ const MainEditor = () => {
 
   const outputDetails = active[0].outputDetails;
   const [processing, setProcessing] = useState(false);
-
-  const enterPress = useKeyPress("Enter");
-  const ctrlPress = useKeyPress("Control");
-
   const codeChange = (value) => {
     const newCurrentTab = {
       name: activeTab.name,
@@ -40,13 +34,6 @@ const MainEditor = () => {
     };
     updateTab(newCurrentTab);
   };
-
-  useEffect(() => {
-    if (enterPress && ctrlPress) {
-      console.log("enterPress", enterPress);
-      console.log("ctrlPress", ctrlPress);
-    }
-  }, [ctrlPress, enterPress]);
 
 
   const handleExport = () => {

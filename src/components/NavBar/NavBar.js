@@ -11,9 +11,7 @@ export const NavBar = () => {
             <div className='inline'> 
                 <DataBasesDropdown/>
             </div>
-        
             <div className='inline'><button>Profile</button></div>
-            <div className='inline'><button>Login/LogOut</button></div>
         </div>
     </div>
 

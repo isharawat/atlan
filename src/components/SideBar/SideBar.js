@@ -6,9 +6,10 @@ import { SavedTable } from "./SavedTable";
 import { data1 } from "../../dummyData";
 import {allTable}  from "../../dummyTable";
 export const SideBar = () => {
-  const {tabs, addTab, savedQueries, updateActiveTab, saveQuery} = useContext(AppContext);
+  const {tabs, addTab, savedQueries, updateActiveTab, saveQuery, toggleModalVal} = useContext(AppContext);
   const [tableData, setTableData] = useState(allTable);
   const onSavedQueryClick = (query) => {
+    toggleModalVal(false);
     let found = 0;
     let currTab = {};
     for(let tab in tabs) {
