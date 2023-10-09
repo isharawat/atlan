@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, {useContext } from "react";
 import OutputWindow from "./Output/OutputWindow";
 import OutputDetails from "./Output/OutputDetails.js";
 import { Editor } from "@monaco-editor/react";
@@ -13,7 +13,7 @@ const MainEditor = () => {
 
   let tablesLength = allTable.length;
   let p = Math.floor(Math.random() * tablesLength);
-  
+
   const codeChange = (value) => {
     const newCurrentTab = {
       ...activeTab,
