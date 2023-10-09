@@ -1,13 +1,16 @@
 import React, { useState, useContext } from "react";
 import "./OutputWindow.css";
 import { AppContext } from "../../context/AppContext";
+
 const OutputWindow = () => {
+
   const {activeTab, savedQueries, updateTab, saveQuery} = useContext(AppContext);
   const [query, setquery] = useState("");
   
   const handleChange = (e) => {
     setquery(e.target.value);
   };
+
   const handleClick = () => {
     const newCurrentTab = {
       name: query ? query : activeTab.name,
@@ -28,6 +31,7 @@ const OutputWindow = () => {
     saveQuery(newQueries);
     setquery("");
   };
+
   return (
     <div className="output-window">
       <input
@@ -42,4 +46,5 @@ const OutputWindow = () => {
     </div>
   );
 };
+
 export default OutputWindow;

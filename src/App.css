@@ -85,6 +85,11 @@ button:hover {
   cursor: pointer;
 }
 
+.flex{
+  display: flex;
+  justify-items: center;
+  align-items: center;
+}
 
 table {
   border-collapse: collapse;

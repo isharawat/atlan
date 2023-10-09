@@ -50,26 +50,13 @@ const MainEditor = () => {
     <div className="outer">
       <div className="h-4 w-full bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500"></div>
       <div className="flex flex-row space-x-4 items-start px-4 py-4">
-        <div className="flex flex-col w-full h-full justify-start items-end">
-          <div className="overlay rounded-md overflow-hidden w-full h-full shadow-4xl">
-            <Editor
-              height="40vh"
-              width="100%"
-              value={code}
-              onChange={codeChange}
-            />
-          </div>
-        </div>
+        <Editor height="40vh" width="100%" value={code} onChange={codeChange} />
       </div>
       <div className="right-container">
         <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr" }}>
           <OutputWindow />
-          <div style={{ display: "grid", gridTemplateColumns: "2fr 2fr 1fr"}}>
-            <div
-              className="run-query-box"
-              onClick={handleCompile}
-              disabled={!code}
-            >
+          <div style={{ display: "grid", gridTemplateColumns: "2fr 2fr 1fr" }}>
+            <div className="run-query-box" onClick={handleCompile} disabled={!code}>
               <button className="color-green">
                 {processing ? "Processing..." : "Run Query"}
               </button>

@@ -1,39 +1,34 @@
-/* OutputWindow.css */
 
-/* Container styling */
 .output-window {
-    margin: 20px;
-  }
-  .outer-data-table {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-  }
-  
-  /* Input field styling */
-  .input-field {
-    width: 70%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 13px;
-    margin-right: 10px;
-  }
+  margin: 20px;
+}
 
-  .btn-move {
-    padding: 6px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 12px;
-    margin: 10px;
-    cursor: pointer;
-  }
-  .btn-move:hover {
-    background-color: #ccc;
-  }
-  .save-button {
-    padding: 8px;
-  }
- 
+.outer-data-table {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
 
-  
+.input-field {
+  width: 70%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 13px;
+  margin-right: 10px;
+}
+
+.btn-move {
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 12px;
+  margin: 10px;
+  cursor: pointer;
+}
+.btn-move:hover {
+  background-color: #ccc;
+}
+.save-button {
+  padding: 8px;
+}

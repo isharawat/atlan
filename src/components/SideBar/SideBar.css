@@ -1,6 +1,4 @@
-/* SideBar.css */
 
-/* Style for the outer container of the sidebar */
 .side-bar-outer-box {
   background-color: #e6e6e6;
   height: 100vh;
@@ -8,17 +6,15 @@
   border: 1px solid #ccc;
 }
 
-/* Style for the section headers (e.g., "Models" and "Saved Queries") */
 h2 {
   font-size: 18px;
   margin-bottom: 10px;
 }
 
-/* Style for the list items within each section */
 .heading {
   font-size: 20px;
   margin: 5px 0;
-  cursor: pointer; /* Blue color for links */
+  cursor: pointer; 
 }
 
 .saved-outer {
@@ -26,7 +22,7 @@ h2 {
   justify-content: center;
   align-items: center;
 }
-/* Style for the list items when hovered */
+
 .saved-outer-name {
   width: 80%;
   font-size: 13px;

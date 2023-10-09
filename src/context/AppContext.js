@@ -14,11 +14,6 @@ const initialState = {
       queryId: uuid(),
       code: "Select * from city",
     },
-    {
-      name: "Saved Query 3",
-      queryId: uuid(),
-      code: "Select * from country",
-    },
   ],
   tabs: [
     {
@@ -134,9 +129,11 @@ export const AppProvider = ({ children }) => {
       }
     }
   };
+
   const databaseChange = (value) => {
     dispatch({ type: "changeCurrDatabase", payload: value });
   };
+  
   const value = {
     tabs: state.tabs,
     activeTab: state.activeTab,

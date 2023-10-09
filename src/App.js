@@ -12,20 +12,20 @@ function App() {
     <div className="App">
       <div className="main-outer">
         <SideBar />
-        {modal === true ? (
-          <div className="right-side" >
-              <div className='button' onClick={() => toggleModalVal(false)}>
+        <div className="right-side">
+          <NavBar />
+
+          {modal === true ? (
+            <>
+              <div className="button" onClick={() => toggleModalVal(false)}>
                 Back To Editor
               </div>
-            
-            <OutputDetails outputDetails={data1} />
-          </div>
-        ) : (
-          <div className="right-side">
-            <NavBar />
+              <OutputDetails outputDetails={data1} />
+            </>
+          ) : (
             <TabBar />
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </div>
   );
