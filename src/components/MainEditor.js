@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useState, useContext } from "react";
 import OutputWindow from "./Output/OutputWindow";
 import OutputDetails from "./Output/OutputDetails.js";
 import { Editor } from "@monaco-editor/react";
