@@ -4,10 +4,12 @@ import { data3 } from "../../dummyData";
 const array = data3;
 
 const usePagination = (items, page = 1, perPage = 10) => {
+
   const [activePage, setActivePage] = useState(page);
   const totalPages = Math.ceil(items.length / perPage);
   const offset = perPage * (activePage - 1);
   const paginatedItems = items.slice(offset, perPage * activePage);
+
   return {
     activePage,
     nextPage: () => setActivePage((p) => (p < totalPages ? p + 1 : p)),
@@ -19,11 +21,10 @@ const usePagination = (items, page = 1, perPage = 10) => {
 };
 
 const Main = () => {
-  const { activePage, nextPage, previousPage, totalPages, items } =
-    usePagination(array);
 
+  const { activePage, nextPage, previousPage, totalPages, items } = usePagination(array);
   const columns = Object.keys(items[0]);
-  console.log(columns);
+
   return (
     <div className="outer-data-table">
       <table>

@@ -7,14 +7,8 @@ import { data1 } from "../../dummyData";
 import { allTable } from "../../dummyTable";
 
 export const SideBar = () => {
-  const {
-    tabs,
-    addTab,
-    savedQueries,
-    updateActiveTab,
-    saveQuery,
-    toggleModalVal,
-  } = useContext(AppContext);
+  
+  const {tabs, addTab, savedQueries, updateActiveTab, saveQuery, toggleModalVal} = useContext(AppContext);
   const [tableData, setTableData] = useState(allTable);
 
   const onSavedQueryClick = (query) => {
@@ -31,9 +25,7 @@ export const SideBar = () => {
 
     if (!found) {
       const currNew = {
-        name: query.name,
-        queryId: query.queryId,
-        code: query.code,
+        ...query,
         outputDetails: [],
       };
       addTab(currNew);
@@ -89,7 +81,7 @@ export const SideBar = () => {
                   className="image-button"
                   onClick={() => handleDelete(query)}
                 >
-                  <img src={deleteIcon} alt="img" style={{ width: "15px" }} />
+                  <img src={deleteIcon} alt="img" style={{ width: "12px" }} />
                 </button>
               </div>
             );

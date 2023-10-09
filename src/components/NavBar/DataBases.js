@@ -3,6 +3,7 @@ import "./../NavBar/NavBar.css";
 import { AppContext } from "../../context/AppContext";
 
 function DataBasesDropdown() {
+  
   const { currDatabase, databaseChange } = useContext(AppContext);
   const databases = [
     {

@@ -5,32 +5,25 @@ import { Editor } from "@monaco-editor/react";
 import { AppContext } from "../context/AppContext";
 import { allTable } from "../dummyTable";
 import { resetIcon } from "../assets/images";
+
 const MainEditor = () => {
   const { tabs, activeTab, updateTab, resetClick } = useContext(AppContext);
   const active = tabs.filter((c) => c.queryId === activeTab.queryId);
-
-  const code = active[0].code;
-
-  const outputDetails = active[0].outputDetails;
-  const [processing, setProcessing] = useState(false);
-  const codeChange = (value) => {
-    const newCurrentTab = {
-      name: activeTab.name,
-      queryId: activeTab.queryId,
-      code: value,
-      outputDetails: activeTab.outputDetails,
-    };
-    updateTab(newCurrentTab);
-  };
+  const {code, outputDetails} = active[0];
 
   let tablesLength = allTable.length;
   let p = Math.floor(Math.random() * tablesLength);
-
+  
+  const codeChange = (value) => {
+    const newCurrentTab = {
+      ...activeTab,
+      code: value,
+    };
+    updateTab(newCurrentTab);
+  };
   const outputChange = () => {
     const newCurrentTab = {
-      name: activeTab.name,
-      queryId: activeTab.queryId,
-      code: activeTab.code,
+      ...activeTab,
       outputDetails: allTable[p].data,
     };
     updateTab(newCurrentTab);
@@ -40,13 +33,8 @@ const MainEditor = () => {
     console.log(outputDetails);
   };
 
-  const handleCompile = () => {
-    setProcessing(true);
-    outputChange();
-    setTimeout(() => setProcessing(false), 1000);
-  };
-
   return (
+
     <div className="outer">
       <div className="h-4 w-full bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500"></div>
       <div className="flex flex-row space-x-4 items-start px-4 py-4">
@@ -56,10 +44,12 @@ const MainEditor = () => {
         <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr" }}>
           <OutputWindow />
           <div style={{ display: "grid", gridTemplateColumns: "2fr 2fr 1fr" }}>
-            <div className="run-query-box" onClick={handleCompile} disabled={!code}>
-              <button className="color-green">
-                {processing ? "Processing..." : "Run Query"}
-              </button>
+            <div
+              className="run-query-box"
+              onClick={outputChange}
+              disabled={!code}
+            >
+              <button className="color-green">Run Query</button>
             </div>
             <div className="run-query-box ">
               <button onClick={handleExport}>Export Data</button>
@@ -83,4 +73,5 @@ const MainEditor = () => {
     </div>
   );
 };
+
 export default MainEditor;

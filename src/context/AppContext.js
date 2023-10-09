@@ -29,33 +29,37 @@ const initialState = {
 };
 
 export const AppContext = createContext(initialState);
+
 export const AppProvider = ({ children }) => {
+
   const [state, dispatch] = useReducer(appReducer, initialState);
+
   const toggleModalVal = (type) => {
     dispatch({
       type: "toggleModal",
       payload: type,
-    })
-  }
+    });
+  };
+  
   const saveQuery = (query) => {
     dispatch({
       type: "changeSavedQuery",
       payload: query,
     });
   };
-  
+
   const resetClick = () => {
     const newtab = state.tabs.map((c) => {
       if (c.queryId === state.activeTab.queryId) {
         console.log("inside map", c);
-        const currtab = {...c, code: "Select * from table"};
+        const currtab = { ...c, code: "Select * from table" };
         return currtab;
       } else {
         return c;
       }
     });
     dispatch({ type: "ChangingCodeValue", payload: newtab });
-  }
+  };
 
   const updateActiveTab = (updateTab) => {
     dispatch({
@@ -118,12 +122,14 @@ export const AppProvider = ({ children }) => {
           payload: tabsAfterDeletion[index],
         });
       } else {
-        const customTab = [{
-          name: "New Query",
-          queryId: uuid(),
-          code: "Select * from table",
-          outputDetails: [],
-        }];
+        const customTab = [
+          {
+            name: "New Query",
+            queryId: uuid(),
+            code: "Select * from table",
+            outputDetails: [],
+          },
+        ];
         dispatch({ type: "ChangingCodeValue", payload: customTab });
         dispatch({ type: "changeActiveState", payload: customTab[0] });
       }
@@ -133,7 +139,7 @@ export const AppProvider = ({ children }) => {
   const databaseChange = (value) => {
     dispatch({ type: "changeCurrDatabase", payload: value });
   };
-  
+
   const value = {
     tabs: state.tabs,
     activeTab: state.activeTab,

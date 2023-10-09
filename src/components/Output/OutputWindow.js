@@ -6,23 +6,18 @@ const OutputWindow = () => {
 
   const {activeTab, savedQueries, updateTab, saveQuery} = useContext(AppContext);
   const [query, setquery] = useState("");
-  
-  const handleChange = (e) => {
-    setquery(e.target.value);
-  };
 
   const handleClick = () => {
     const newCurrentTab = {
+      ...activeTab,
       name: query ? query : activeTab.name,
-      queryId: activeTab.queryId,
-      code: activeTab.code,
-      outputDetails: activeTab.outputDetails,
     };
     updateTab(newCurrentTab);
 
     const newQueries = savedQueries.filter(
       (c) => c.queryId !== activeTab.queryId
     );
+
     newQueries.push({
       name: query ? query : activeTab.name,
       queryId: activeTab.queryId,
@@ -38,7 +33,7 @@ const OutputWindow = () => {
         className="input-field"
         type="text"
         value={query}
-        onChange={handleChange}
+        onChange={(e) => setquery(e.target.value)}
       ></input>
       <button onClick={handleClick} className="save-button">
         Save
