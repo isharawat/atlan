@@ -1,22 +1,23 @@
 
-import React, { useState } from 'react';
-import './NavBar.css'
+import React, { useContext } from 'react';
+import './../NavBar/NavBar.css';
+import { AppContext } from '../../context/AppContext';
 
 // Handling the dropdown, setting the preferred ordering and grouping.
 function DataBasesDropdown() {
-    const [currDatabase, setCurrDatabase] = useState({});
+  const {currDatabase, databaseChange} = useContext(AppContext);
   const databases = [
     {
         id: 1,
-        name: "Project 1"
+        name: "Project1"
     },
     {
         id: 2,
-        name: "Project 2"
+        name: "Project2"
     },
     {
         id: 3,
-        name: "Project 3"
+        name: "Project3"
     }
   ]
 
@@ -24,7 +25,7 @@ function DataBasesDropdown() {
     <div className="database-dropdown">
       <div className='database-dropdown-div'>
         <div className='database-display-text'>DataBases</div> 
-        <select className = "database-select" value={currDatabase} onChange={(e) => setCurrDatabase(e.target.value)}>
+        <select className = "database-select" value={currDatabase} onChange={(e)=>databaseChange(e.target.value)}>
           {databases.map((opt) => (
             <option key={opt} value={opt.name}>
               {opt.name}

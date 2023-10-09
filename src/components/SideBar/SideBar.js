@@ -35,7 +35,7 @@ export const SideBar = () => {
   };
   const addTableClick = () => {
     setTableData([...tableData, {
-      name: "public.user",
+      name: "user",
       data: data1,
     }])
   }
@@ -51,7 +51,7 @@ export const SideBar = () => {
       <div>
         <button className="add-new-button" onClick={()=>addTableClick()}>
           <img src = {addIcon} alt = "img" style={{width: "12px"}}></img>New Table</button>
-        </div>
+      </div>
 
       <div className="heading">
         <h2>All Tables</h2>

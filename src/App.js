@@ -14,7 +14,6 @@ function App() {
         <SideBar />
         {modal === true ? (
           <div className="right-side" >
-            
               <div className='button' onClick={() => toggleModalVal(false)}>
                 Back To Editor
               </div>

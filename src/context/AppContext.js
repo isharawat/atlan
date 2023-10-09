@@ -30,6 +30,7 @@ const initialState = {
   ],
   activeTab: null,
   modal: false,
+  currDatabase: "Project1",
 };
 
 export const AppContext = createContext(initialState);
@@ -133,12 +134,15 @@ export const AppProvider = ({ children }) => {
       }
     }
   };
-
+  const databaseChange = (value) => {
+    dispatch({ type: "changeCurrDatabase", payload: value });
+  };
   const value = {
     tabs: state.tabs,
     activeTab: state.activeTab,
     savedQueries: state.savedQueries,
     modal: state.modal,
+    currDatabase: state.currDatabase,
     addTab,
     updateActiveTab,
     updateTab,
@@ -146,6 +150,7 @@ export const AppProvider = ({ children }) => {
     saveQuery,
     toggleModalVal,
     resetClick,
+    databaseChange,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

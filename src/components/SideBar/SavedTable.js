@@ -5,10 +5,11 @@ import { AppContext } from '../../context/AppContext';
 
 export const SavedTable = ({table}) => {    
     
-    const {toggleModalVal} = useContext(AppContext);
+    const {toggleModalVal, currDatabase} = useContext(AppContext);
+    const tableName = currDatabase + "." + table.name;
     return(
         <>
-          <div className="saved-outer-name" onClick={()=>toggleModalVal(true)}> {table.name}</div>  
+          {currDatabase && <div className="saved-outer-name" onClick={()=>toggleModalVal(true)}> {tableName}</div> }
         </>
         
     );

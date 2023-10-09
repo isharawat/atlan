@@ -2,15 +2,15 @@ import {data1, data2} from './dummyData';
 
 export const allTable = [
     {
-      name: "public.name",
+      name: "name",
       data: data1,
     },
     {
-      name: "public.country",
+      name: "country",
       data: data2,
     },
     {
-      name: "public.user",
+      name: "user",
       data: data1,
     },
 ];

@@ -26,6 +26,11 @@ const appReducer = (state, action) => {
         ...state,
         modal: payload,
     }
+    case "changeCurrDatabase":
+      return {
+        ...state,
+        currDatabase: payload,
+      }
     default:
       return state;
   }
