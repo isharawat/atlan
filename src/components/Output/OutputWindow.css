@@ -1,8 +1,7 @@
-
 .output-window {
-  margin: 20px;
+  display: flex;
+  align-items: center;
 }
-
 .outer-data-table {
   display: flex;
   align-items: center;
@@ -10,25 +9,25 @@
 }
 
 .input-field {
-  width: 70%;
+  width: 300px;
   padding: 8px;
-  border: 1px solid #ccc;
+  border: 1px solid rgb(244 250 254);
   border-radius: 5px;
   font-size: 13px;
   margin-right: 10px;
+  display: inline-flex;
 }
 
 .btn-move {
-  padding: 6px;
-  border: 1px solid #ccc;
+  border: 1px solid rgb(244 250 254);
   border-radius: 5px;
   font-size: 12px;
-  margin: 10px;
   cursor: pointer;
 }
 .btn-move:hover {
-  background-color: #ccc;
+  background-color: rgb(244 250 254);
 }
 .save-button {
   padding: 8px;
+  display: inline-flex;
 }

@@ -1,6 +1,6 @@
 /* src/App.css */
 body {
-  background-color: #e6e6e6;
+  background-color: #dee2e6;
 }
 ::-webkit-scrollbar {
   width: 10px;
@@ -23,8 +23,7 @@ body {
   
 .App {
   font-family: Arial, sans-serif;
-  height: 100vh;
-  background-color: #e6e6e6;
+  background-color: #dee2e6;
 }
 
 .color-green {
@@ -32,24 +31,28 @@ body {
   color: #f3f3f3;
   font-size: 20px;
 }
+
 .color-green:hover{
   color: black;
 }
+
 .main-outer {
   display: grid;
   grid-template-columns: 1fr 5fr;
 }
 
 .run-query-box {
-  display: flex;
-  justify-items: center;
-  align-items: center;
+  display: inline;
+  margin: 2px;
 }
+
 .right-side {
+  width: 100%;
   display: flex;
   align-items: center;
   flex-direction: column;
 }
+
 h1 {
   color: #333;
 }
@@ -59,27 +62,19 @@ button {
   cursor: pointer;
   border: none;
   border-radius: 5px;
+  color: #60717e;
 }
 button:hover {
-  background-color: #ccc;
+  background-color: rgb(244 250 254);
+  color: #60717e;
 }
-.button {
-  font-size: 15px;
-  background-color: #05aa6d; 
-  cursor: pointer;
-  border: none;
-  color: white;
-  margin: 20px 0px;
-  border-radius: 5px;
-  padding: 4px;
-}
+
 .button:hover {
-  background-color: #ccc;
+  background-color: rgb(244 250 254);
   color: black;
 }
 .run-query-box button {
   padding: 6px;
-  border: 1px solid white;
   font-size: 13px;
   border: none;
   cursor: pointer;
@@ -93,14 +88,22 @@ button:hover {
 
 table {
   border-collapse: collapse;
-  border: 1px solid #ccc;
   font-size: 10px;
+  margin-top: 20px;
 }
 
-th, td {
+th{
+  padding: 6px 20px;
+  text-align: center;
+  font-size: 15px;
+  background-color: #60717e;
+  color: white;
+}
+td {
   padding: 5px;
-  border: 1px solid #ccc;
-  text-align: left;
+  text-align: center;
+  font-size: 12px;
+
 }
 
 ul {
@@ -109,4 +112,8 @@ ul {
 
 li {
   margin: 5px 0;
+}
+
+img{
+  cursor: pointer;
 }

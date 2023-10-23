@@ -18,12 +18,16 @@ const initialState = {
   tabs: [
     {
       name: "New Query",
-      queryId: uuid(),
+      queryId: 1,
       code: "Select * from table",
       outputDetails: [],
     },
   ],
-  activeTab: null,
+  activeTab: {
+    name: "New Query",
+    queryId: 1,
+    code: "Select * from table",
+  },
   modal: false,
   currDatabase: "Project1",
 };

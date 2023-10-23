@@ -1,7 +1,4 @@
-import React, { useState } from "react";
-import { data3 } from "../../dummyData";
-
-const array = data3;
+import React, { useEffect, useState } from "react";
 
 const usePagination = (items, page = 1, perPage = 10) => {
 
@@ -20,8 +17,9 @@ const usePagination = (items, page = 1, perPage = 10) => {
   };
 };
 
-const Main = () => {
-
+const Main = ({outputDetails}) => {
+  
+  const array = outputDetails;
   const { activePage, nextPage, previousPage, totalPages, items } = usePagination(array);
   const columns = Object.keys(items[0]);
 
@@ -35,11 +33,11 @@ const Main = () => {
             ))}
           </tr>
         </thead>
-        <tbody>
+        <tbody style={{backgroundColor: "rgb(244 250 254)"}}>
           {items.map((row) => (
             <tr key={row.id}>
               {columns.map((column) => (
-                <td key={column}>{row[column]}</td>
+                <td key={column}>{row[column].toString()}</td>
               ))}
             </tr>
           ))}
@@ -75,15 +73,29 @@ const Main = () => {
   );
 };
 
-export const OutputDetails = ({ outputDetails }) => {
+export const OutputDetails = ({outputDetails}) => {
+  
+  const [array, setArray] = useState([]);
+  const fetchData = async() => {
+    let data = await fetch(
+      "https://random-data-api.com/api/v2/blood_types?size=100"
+      );
+    data = await data.json();
+    console.log(data);
+    setArray(data);
+  }
 
+  useEffect(() => {
+    fetchData();
+  }, [])
+  
   if (!outputDetails || outputDetails.length === 0) {
     return <></>;
   }
-
+  
   return (
     <div className="outer-data-table">
-      <Main />
+      {array.length && <Main  outputDetails = {array}/>}
     </div>
   );
 };

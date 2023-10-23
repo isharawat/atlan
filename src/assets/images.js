@@ -1,5 +1,8 @@
-import crossIcon from './xmark-solid.svg';
-import deleteIcon from './trash-solid.svg'
-import addIcon from './circle-plus-solid.svg'
+import crossIcon from './icons8-plus (1).svg';
+import deleteIcon from './delete.png'
+import addIcon from './icons8-plus.svg'
+import profileIcon from './profile-user.png'
 import resetIcon from './reset-svgrepo-com.svg'
-export {crossIcon, deleteIcon, addIcon, resetIcon};
+import settingIcon from './settings.png';
+import run from './play (1).png'
+export {crossIcon, deleteIcon, addIcon, resetIcon, settingIcon,profileIcon, run};

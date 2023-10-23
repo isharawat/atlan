@@ -3,12 +3,18 @@ import "./SideBar.css";
 import { AppContext } from "../../context/AppContext";
 import { addIcon, deleteIcon } from "../../assets/images";
 import { SavedTable } from "./SavedTable";
-import { data1 } from "../../dummyData";
 import { allTable } from "../../dummyTable";
+import DataBasesDropdown from "./DataBases";
 
 export const SideBar = () => {
-  
-  const {tabs, addTab, savedQueries, updateActiveTab, saveQuery, toggleModalVal} = useContext(AppContext);
+  const {
+    tabs,
+    addTab,
+    savedQueries,
+    updateActiveTab,
+    saveQuery,
+    toggleModalVal,
+  } = useContext(AppContext);
   const [tableData, setTableData] = useState(allTable);
 
   const onSavedQueryClick = (query) => {
@@ -40,7 +46,6 @@ export const SideBar = () => {
       ...tableData,
       {
         name: "user",
-        data: data1,
       },
     ]);
   };
@@ -55,15 +60,21 @@ export const SideBar = () => {
   return (
     <div className="side-bar-outer-box">
       <div>
+        <DataBasesDropdown />
+      </div>
+      <div>
         <button className="add-new-button" onClick={() => addTableClick()}>
-          <img src={addIcon} alt="img" style={{ width: "12px" }}></img>New Table
+          <span>New Table</span>
+          <img src={addIcon} alt="img" style={{ width: "14px" }}></img>
         </button>
       </div>
       <div className="heading">
         <h2>All Tables</h2>
-        {tableData.map((table) => (
-          <SavedTable table={table} />
-        ))}
+        <div className="saved-outer">
+          {tableData.map((table) => (
+            <SavedTable table={table} />
+          ))}
+        </div>
       </div>
       <div className="heading">
         <h2>Saved Queries</h2>
@@ -75,14 +86,18 @@ export const SideBar = () => {
                   className="saved-outer-name"
                   onClick={() => onSavedQueryClick(query)}
                 >
-                  {query.name}
+                  <span> {query.name}</span>
+
+                  <div
+                    onClick={() => handleDelete(query)}
+                  >
+                    <img
+                      src={deleteIcon}
+                      alt="img"
+                      style={{ width: "13px", height: "13px" }}
+                    />
+                  </div>
                 </div>
-                <button
-                  className="image-button"
-                  onClick={() => handleDelete(query)}
-                >
-                  <img src={deleteIcon} alt="img" style={{ width: "12px" }} />
-                </button>
               </div>
             );
           })}

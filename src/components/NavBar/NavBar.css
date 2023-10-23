@@ -1,47 +1,17 @@
-.database-dropdown {
-  margin: 10px 0px;
-  border-radius: 4px;
-  width: 170px;
-  padding: 2px;
-  background-color: white;
+.navbar-outer-box {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
-
-.database-display-text {
-  color: rgb(58, 57, 57);
-  font-size: 12px;
+.m-12 {
+  margin: 12px;
 }
-
-.database-select {
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  outline: none;
-  cursor: pointer;
-  align-items: end;
-  text-align: left;
-  color: rgb(58, 57, 57);
-  font-weight: bold;
-  font-size: 12px;
-  box-shadow: 0 0 5px rgba(104, 102, 102, 0.3);
-}
-
-.database-dropdown-div {
-  display: flex;
-  justify-content: space-between;
-  margin: 5px;
-}
-
-.navbar-outer-box {
-  width: 130vh;
-  padding: 5px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
 .inline {
   display: inline-flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
-  padding-right: 5px;
 }
+
+
