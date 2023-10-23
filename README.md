@@ -4,7 +4,7 @@
 
 This project is a versatile SQL query editor designed to help users work on multiple SQL queries concurrently, visualize their data, and save/query their work efficiently. It serves as a valuable tool for database professionals, analysts, and developers.
 
-## [Deployment Link](`https://dynamic-tiramisu-a30a0f.netlify.app/`)
+## [Deployment Link](https://dynamic-tiramisu-a30a0f.netlify.app/)
 
 ## Key Features
 
